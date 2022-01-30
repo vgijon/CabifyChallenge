@@ -8,3 +8,8 @@ class StatusSerializer(serializers.Serializer):
 class CarSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     seats = serializers.IntegerField()
+
+
+class JourneySerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    people = serializers.IntegerField()

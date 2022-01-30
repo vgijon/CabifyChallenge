@@ -1,11 +1,8 @@
-from urllib.request import Request
-from django.shortcuts import render
-
 from rest_framework import status
 from rest_framework.generics import views
 from rest_framework.response import Response
 
-from applications.carPooling.serializers import StatusSerializer, CarSerializer
+from applications.carPooling.serializers import StatusSerializer, CarSerializer, JourneySerializer
 
 
 class StatusView(views.APIView):
@@ -26,3 +23,12 @@ class LoadCarsView(views.APIView):
             return Response(status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
+
+class BookingJourneyView(views.APIView):
+
+    def post(self, request):
+        serializer = JourneySerializer(data=request.data)
+        if serializer.is_valid():
+            # Registry group in journey queue
+            return Response(status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
