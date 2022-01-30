@@ -13,3 +13,7 @@ class CarSerializer(serializers.Serializer):
 class JourneySerializer(serializers.Serializer):
     id = serializers.IntegerField()
     people = serializers.IntegerField()
+
+
+class DropOffSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
